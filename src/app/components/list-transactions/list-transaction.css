@@ -39,6 +39,7 @@
   border: 0;
   cursor: pointer;
   float: right;
+  margin-right: 10px;
 }
 
 #list-container ul li span {

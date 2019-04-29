@@ -1,6 +1,8 @@
 ## Sistema de transações
 
-Esta PWA tem como objetivo cadastrar transações, lista-lás e fazer uma soma das transações realizadas, podendo também limpar todas ou exclui-las.
+Esta PWA tem como objetivo cadastrar transações, lista-lás e exibir o total de transações realizadas.<br>
+É possível também limpar todas ou excluir alguns itens.<br>
+Tratamento da moeda: PT-BR.
 
 ### `npm start`
 
