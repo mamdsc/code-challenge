@@ -33,8 +33,9 @@ $ cd code-challenge
 $ yarn install | npm install
 $ npm start
 
-### Melhorias
+Porta: [http://localhost:3000](http://localhost:3000).
+
+#### Melhorias
 Melhorar a responsividade.
 
 
-Porta: [http://localhost:3000](http://localhost:3000).
