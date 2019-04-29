@@ -28,10 +28,12 @@ Tentei seguir alguns padrões de projeto como YAGNI e KISS.
 
 #### Para rodar o projeto
 
+```bash
 $ git clone https://github.com/mamdsc/code-challenge
 $ cd code-challenge
 $ yarn install | npm install
 $ npm start
+```
 
 Porta: [http://localhost:3000](http://localhost:3000).
 
