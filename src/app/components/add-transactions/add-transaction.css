@@ -1,0 +1,48 @@
+#add-container {
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 500px;
+}
+
+#add-container form {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+#add-container form input {
+    height: 48px;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+#add-container form button {
+    height: 48px;
+    background: #7159c1;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 0 20px;
+    margin-top: 30px;
+    color: #FFF;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+}
+
+#add-container form button:hover {
+    opacity: 0.8;
+}
+
+#add-container form h1 {
+    height: 48px;
+    font-size: 24px;
+    padding: 0 20px;
+    margin-top: 30px;
+    text-align: center;
+    text-shadow: 2px 2px #DDD;
+}

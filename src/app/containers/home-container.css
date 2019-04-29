@@ -1,0 +1,11 @@
+#body-container {
+    display: table;
+}
+
+#left-container {
+    float: left;
+}
+
+#right-container {
+    float: right;
+}

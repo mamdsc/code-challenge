@@ -1,0 +1,36 @@
+#balance-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 350px;
+  text-align: center;
+  width: 350px;
+  flex-direction: column;
+}
+
+#balance-container h1 {
+  font-size: 21px;
+  margin-top: 25px;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  background-color: #7159c1;
+  line-height: 200px;
+  color: white;
+}
+
+#balance-container button {
+  height: 48px;
+  background: #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 0 20px;
+  margin-top: 30px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+}
+
+#balance-container form button:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,60 @@
+#list-container {
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 500px;
+    margin-right: 100px;
+}
+
+#list-container ul {
+  margin-top: 30px;
+  list-style: none;
+  overflow-y: auto;
+  height: 450px;
+  color: #4d4d4d;
+}
+
+#list-container h1 {
+  margin-top: 80px;
+  align-items: center;
+  font-size: 21px;
+  display: flex;
+  justify-content: center;
+  text-shadow: 2px 2px #DDD;
+}
+
+
+#list-container ul li + li {
+  padding-top: 20px;
+  margin-top: 20px;
+  flex: 1;
+}
+
+#list-container ul li button {
+  background: #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+  padding: 3px 6px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  float: right;
+}
+
+#list-container ul li span {
+  margin-left: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #DDD; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: grey; 
+  border-radius: 10px; 
+}
