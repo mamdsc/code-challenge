@@ -82,8 +82,8 @@ class HomeContainer extends Component {
   };
 
   sum = (transactions) => {
-    var x = transactions.map(t => currency(t.value, {separator: '.', decimal: ','}).value);
-    return x.reduce((currentValue, item) => {
+    var transformValues = transactions.map(t => currency(t.value, {separator: '.', decimal: ','}).value);
+    return transformValues.reduce((currentValue, item) => {
       return currentValue += item
     }, 0);
   }
