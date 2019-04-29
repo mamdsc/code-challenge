@@ -3,6 +3,7 @@ import './list-transaction.css';
 import PropTypes from 'prop-types';
 import { distanceInWords } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import currency from 'currency.js';
 
 const ListTransactions = (props) => (
     <React.Fragment>
@@ -12,7 +13,14 @@ const ListTransactions = (props) => (
             <ul>
                 {props.transactions.map((t, index) => (
                     <li key={index}>
-                        <strong>{t.description} - {t.value}</strong>
+                        <strong>
+                        {t.description} - {
+                            currency(t.value, {separator: '.', decimal: ','}).value.toLocaleString("pt-BR", {
+                                style: "currency",
+                                currency: "BRL"
+                            })
+                        }
+                        </strong>
                         <span>há{""} {distanceInWords(t.date, new Date(), { locale: pt })}</span>
                         <button onClick={() => props.removeTransaction(index)}>x</button>
                     </li>

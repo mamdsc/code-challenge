@@ -17,8 +17,8 @@ const AddTransaction = (props) => (
             <input
                 placeholder='Valor'
                 value={props.value}
+                type={'text'}
                 onChange={props.setValue}
-                type={'number'}
             />
             <button type='submit'>Enviar</button>
         </form>
@@ -27,7 +27,7 @@ const AddTransaction = (props) => (
 
 AddTransaction.propTypes = {
     description: PropTypes.string.isRequired,
-    value: PropTypes.number,
+    value: PropTypes.string,
     setDescription: PropTypes.func,
     setValue: PropTypes.func,
     submitTransaction: PropTypes.func

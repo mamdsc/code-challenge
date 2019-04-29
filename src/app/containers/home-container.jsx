@@ -3,14 +3,15 @@ import { AddTransaction } from '../components/add-transactions/add-transaction';
 import { ListTransactions } from '../components/list-transactions/list-transactions';
 import { BalanceTransactions } from '../components/balance-transactions/balance-transactions';
 import { transactionService } from '../../services/transactions-service';
-import './home-container.css'
+import './home-container.css';
+import currency from 'currency.js';
 
 class HomeContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      description: '',
-      value: undefined,
+      description: "",
+      value: "",
       sum: 0,
       transactions: []
     }
@@ -23,9 +24,8 @@ class HomeContainer extends Component {
   getTransactions = () => {
     const transactions = transactionService.getTransaction();
     if (transactions) {
-      this.setState( { transactions }, () => 
-      this.sum()
-      );
+      const sum = this.sum(transactions);
+      this.setState({ transactions, sum });
     }
   }
   
@@ -37,65 +37,77 @@ class HomeContainer extends Component {
 
   setValue = (e) => {
     this.setState({
-      value: Number(e.target.value)
+      value: e.target.value
     })
   }
   
   submitTransaction = (e) => {
+    const { transactions, description, value } = this.state;
+
     e.preventDefault();
+    if (this.validate() === false) return;
 
-    const { description, value } = this.state;
+    let newTransactions = [
+      ...transactions,
+      {
+        description: description,
+        value: value,
+        date: new Date()
+      }
+    ];
 
-    if (description === null || description === undefined || description <= 0) {
-      alert('Por favor preencha a descrição');
-      return;
-    }
-
-    if (value === null ||value === undefined || value <= 0) {
-      alert('Por favor preencha o valor da transação');
-      return;
-    }
-
-    let nova = [
-      ...this.state.transactions,{
-      description: this.state.description,
-      value: this.state.value,
-      date: new Date()
-    }];
-
-   nova = this.order(nova);
-
-   console.log(nova);
+    newTransactions = this.order(newTransactions);
+    const sum = this.sum(newTransactions);
 
     this.setState({
-      transactions: nova
+      transactions: newTransactions,
+      sum
     }, () => {
-        this.sum();
         transactionService.setTransaction(this.state.transactions);
     })
   }
 
-  sum = () => {
-    const sum = this.state.transactions.reduce((currentValue, item) => {
-      return currentValue += item.value
+  validate = () => {
+    const { description, value } = this.state;
+
+    if (description === null || description === undefined || description <= 0) {
+      alert("Por favor preencha a descrição");
+      return false;
+    }
+
+    if (value === null || value === undefined || value <= 0) {
+      alert("Por favor preencha o valor da transação");
+      return false;
+    }
+  };
+
+  sum = (transactions) => {
+    var x = transactions.map(t => currency(t.value, {separator: '.', decimal: ','}).value);
+    return x.reduce((currentValue, item) => {
+      return currentValue += item
     }, 0);
-    this.setState({
-      sum 
-    })
   }
 
-  cleanTransactions = () => {
+  cleanTransactions = (e) => {
+    e.preventDefault();
     transactionService.clearTransaction();
+    this.setState({
+      sum: 0,
+      transactions: []
+    });
   }
 
   removeTransaction = (index) => {
     const { transactions } = this.state;
     transactions.splice(index, 1);
+    const sum = this.sum( transactions );
+
     this.setState({
-      transactions: transactions
-    })
-    transactionService.setTransaction(transactions);
-    this.sum();
+      transactions,
+      sum
+    },
+      () => transactionService.setTransaction(transactions)
+    );
   }
 
   order = (transactions) => {    
